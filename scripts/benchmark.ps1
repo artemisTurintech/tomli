@@ -34,24 +34,18 @@ $config = (Get-Content artemis_results.json | ConvertFrom-Json)[0]
 
 $result = @(
     [ordered]@{
-        runs              = $Runs
-        repeats_per_run   = $config.repeats
-        parses_per_trial  = $config.parses_per_trial
-        throughput_parses_per_sec = [ordered]@{
-            mean      = [math]::Round((Get-Mean $throughputs), 2)
-            std       = [math]::Round((Get-Std  $throughputs), 2)
-            direction = "higher_is_better"
-        }
-        ms_per_parse = [ordered]@{
-            mean      = [math]::Round((Get-Mean $msPerParse), 4)
-            std       = [math]::Round((Get-Std  $msPerParse), 4)
-            direction = "lower_is_better"
-        }
-        avg_time_for_500_parses_sec = [ordered]@{
-            mean      = [math]::Round((Get-Mean $avgTimes), 6)
-            std       = [math]::Round((Get-Std  $avgTimes), 6)
-            direction = "lower_is_better"
-        }
+        runs                              = $Runs
+        repeats_per_run                   = $config.repeats
+        parses_per_trial                  = $config.parses_per_trial
+        throughput_parses_per_sec_mean    = [math]::Round((Get-Mean $throughputs), 2)
+        throughput_parses_per_sec_stdev   = [math]::Round((Get-Std  $throughputs), 2)
+        throughput_parses_per_sec_better_when = "higher"
+        ms_per_parse_mean                 = [math]::Round((Get-Mean $msPerParse), 4)
+        ms_per_parse_stdev                = [math]::Round((Get-Std  $msPerParse), 4)
+        ms_per_parse_better_when          = "lower"
+        avg_time_for_500_parses_sec_mean  = [math]::Round((Get-Mean $avgTimes), 6)
+        avg_time_for_500_parses_sec_stdev = [math]::Round((Get-Std  $avgTimes), 6)
+        avg_time_for_500_parses_sec_better_when = "lower"
     }
 )
 
