@@ -39,13 +39,13 @@ $result = @(
         parses_per_trial                  = $config.parses_per_trial
         throughput_parses_per_sec_mean    = [math]::Round((Get-Mean $throughputs), 2)
         throughput_parses_per_sec_stdev   = [math]::Round((Get-Std  $throughputs), 2)
-        throughput_parses_per_sec_better_when = "higher"
+        throughput_parses_per_sec_better_when = 1
         ms_per_parse_mean                 = [math]::Round((Get-Mean $msPerParse), 4)
         ms_per_parse_stdev                = [math]::Round((Get-Std  $msPerParse), 4)
-        ms_per_parse_better_when          = "lower"
+        ms_per_parse_better_when          = 0
         avg_time_for_500_parses_sec_mean  = [math]::Round((Get-Mean $avgTimes), 6)
         avg_time_for_500_parses_sec_stdev = [math]::Round((Get-Std  $avgTimes), 6)
-        avg_time_for_500_parses_sec_better_when = "lower"
+        avg_time_for_500_parses_sec_better_when = 0
     }
 )
 
